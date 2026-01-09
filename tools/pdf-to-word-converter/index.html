@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Free PDF to Word Converter | Online Tool</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📄</text></svg>">
+    <!-- Font Awesome for icons (CDN) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-file-pdf"></i> PDF to Word Converter</h1>
+            <p class="subtitle">Free online tool to convert PDF files to editable Word documents</p>
+        </header>
+
+        <!-- Information Box -->
+        <div class="info-box">
+            <p><i class="fas fa-info-circle"></i> <strong>Browser-only mode:</strong> Extracts text only. For full conversion with formatting, use the backend option.</p>
+        </div>
+
+        <!-- Main Converter Box -->
+        <div class="converter-box">
+            <!-- Upload Area -->
+            <div class="upload-area" id="uploadArea">
+                <i class="fas fa-cloud-upload-alt"></i>
+                <h3>Upload PDF File</h3>
+                <p>Drag & drop or click to select</p>
+                <input type="file" id="pdfInput" accept=".pdf">
+                <p class="file-info">Max file size: 10MB</p>
+            </div>
+
+            <!-- File Info -->
+            <div class="file-info-box" id="fileInfo" style="display: none;">
+                <h4><i class="fas fa-file-pdf"></i> Selected File</h4>
+                <p id="fileName"></p>
+                <p id="fileSize"></p>
+                <button id="removeFile" class="btn-secondary">
+                    <i class="fas fa-trash"></i> Remove
+                </button>
+            </div>
+
+            <!-- Conversion Options -->
+            <div class="options-box">
+                <h4><i class="fas fa-cog"></i> Conversion Options</h4>
+                <div class="option">
+                    <input type="checkbox" id="preserveFormatting" checked>
+                    <label for="preserveFormatting">Preserve basic formatting</label>
+                </div>
+                <div class="option">
+                    <input type="checkbox" id="includeImages" checked>
+                    <label for="includeImages">Include images (backend only)</label>
+                </div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="action-buttons">
+                <button id="convertBtn" class="btn-primary" disabled>
+                    <i class="fas fa-sync-alt"></i> Convert to Word
+                </button>
+                <button id="downloadBtn" class="btn-success" disabled>
+                    <i class="fas fa-download"></i> Download Word File
+                </button>
+            </div>
+
+            <!-- Progress Bar -->
+            <div class="progress-container" id="progressContainer" style="display: none;">
+                <div class="progress-label">Converting...</div>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill"></div>
+                </div>
+                <div class="progress-text" id="progressText">0%</div>
+            </div>
+
+            <!-- Result Message -->
+            <div class="message" id="message"></div>
+        </div>
+
+        <!-- Backend Option -->
+        <div class="backend-box">
+            <h3><i class="fas fa-server"></i> Full Conversion (Backend Required)</h3>
+            <p>For complete PDF to Word conversion with images and formatting:</p>
+            <ol>
+                <li>Download the Node.js backend from below</li>
+                <li>Run <code>npm install</code> then <code>node server.js</code></li>
+                <li>Use the upload form below</li>
+            </ol>
+            
+            <div class="upload-form" id="backendForm">
+                <input type="file" id="backendPdfInput" accept=".pdf">
+                <button id="backendConvertBtn" class="btn-primary">
+                    <i class="fas fa-server"></i> Convert with Backend
+                </button>
+            </div>
+        </div>
+
+        <!-- How It Works -->
+        <div class="instructions">
+            <h3><i class="fas fa-question-circle"></i> How to Use</h3>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h4>Upload PDF</h4>
+                    <p>Click the upload area or drag & drop your PDF file</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h4>Convert</h4>
+                    <p>Click "Convert to Word" to process your file</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h4>Download</h4>
+                    <p>Download your editable Word document (.docx)</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Libraries Info -->
+        <div class="libraries-info">
+            <h4><i class="fas fa-code"></i> Libraries Used</h4>
+            <ul>
+                <li><strong>pdf.js (CDN):</strong> Extracts text from PDF files in browser</li>
+                <li><strong>docx (CDN):</strong> Creates Word documents in browser</li>
+                <li><strong>FileSaver.js (CDN):</strong> Handles file downloads</li>
+                <li><strong>Font Awesome (CDN):</strong> Icons for better UI</li>
+            </ul>
+        </div>
+
+        <footer>
+            <p>© 2024 PDF to Word Converter | Free Online Tool</p>
+            <p class="disclaimer">This tool works entirely in your browser. No files are uploaded to any server in browser mode.</p>
+        </footer>
+    </div>
+
+    <!-- External Libraries (CDN) -->
+    <!-- pdf.js: For parsing PDF files in browser -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.4.120/pdf.min.js"></script>
+    
+    <!-- docx: For creating Word documents in browser -->
+    <script src="https://unpkg.com/docx@8.0.0/build/index.js"></script>
+    
+    <!-- FileSaver.js: For saving files to user's computer -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+    
+    <!-- Our main JavaScript file -->
+    <script src="script.js"></script>
+</body>
+</html>
